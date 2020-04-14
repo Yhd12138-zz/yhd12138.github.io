@@ -14,7 +14,7 @@ $(document).ready(function () {  // Use closure, no globals
         for (let pair of params) {
             let [key, value] = pair.split("=")
             if (key == "question") {
-                questions = await $.getJSON(`questions/yavt_0_2_1.json`)
+                questions = await $.getJSON(`https://yavt.fengtao.xyz/questions/yavt_0_2_1.json`)
                     .fail(()=>console.log("failed to load questions"));
             }
         }
@@ -22,7 +22,7 @@ $(document).ready(function () {  // Use closure, no globals
         if (questions == undefined) {
             console.log("failed to parse parameters");
         }
-        model = await $.getJSON(`models/yavt-5-axes-0.2b.json`)
+        model = await $.getJSON(`https://yavt.fengtao.xyz/models/yavt-5-axes-0.2b.json`)
             .fail(()=>console.log("failed to load model"));
         model_file = questions.model;
         quiz_name = questions.name;
