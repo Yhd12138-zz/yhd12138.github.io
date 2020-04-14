@@ -8,21 +8,21 @@ $(document).ready(function () {  // Use closure, no globals
 
     initialize();
 
-    async function initialize(){
+    /*async function initialize(){
         let url = decodeURIComponent(window.location.search.substring(1));
         let params = url.split("&");
         for (let pair of params) {
             let [key, value] = pair.split("=")
-            if (key == "question") {
+            if (key == "question") {*/
                 questions = await $.getJSON(`https://yavt.fengtao.xyz/questions/yavt_0_2_1.json`)
                     .fail(()=>console.log("failed to load questions"));
-            }
-        }
+            /*}
+        }*/
 
         if (questions == undefined) {
             console.log("failed to parse parameters");
         }
-        model = await $.getJSON(`https://yavt.fengtao.xyz/models/yavt-5-axes-0.2b.json`)
+        model = await getJSON(`https://yavt.fengtao.xyz/models/yavt-5-axes-0.2b.json`)
             .fail(()=>console.log("failed to load model"));
         model_file = questions.model;
         quiz_name = questions.name;
